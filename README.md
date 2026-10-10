@@ -5,3 +5,5 @@
 # @chanyuxi/utils
 
 A small, TypeScript-first collection of dependency-free JavaScript utilities for everyday application development.
+
+See the [API Reference](./docs/index.md) for the complete public API.

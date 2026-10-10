@@ -1,5 +1,13 @@
 # Object
 
+## `clone`
+
+```ts
+clone<TValue>(value: TValue): TValue
+```
+
+Deep-clones supported values while preserving circular and shared references. Functions are returned as-is; Promise and weak collection values throw `TypeError`.
+
 ## `isPlainObject`
 
 ```ts

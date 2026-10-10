@@ -1,6 +1,6 @@
 export { isPromiseLike } from './async'
 export { cloneAndFreeze } from './immutable'
-export { isPlainObject, shallowEqual } from './object'
+export { clone, isPlainObject, shallowEqual } from './object'
 export {
   getPath,
   hasPath,

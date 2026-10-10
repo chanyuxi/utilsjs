@@ -1,25 +1,37 @@
-import { defineConfig } from "rollup";
-
-import del from "rollup-plugin-delete";
-import terser from "@rollup/plugin-terser";
-import typescript from "@rollup/plugin-typescript";
-import emitDeclarations from "./build/plugins/emitDeclarations";
+import terser from '@rollup/plugin-terser'
+import typescript from '@rollup/plugin-typescript'
+import { defineConfig } from 'rollup'
+import del from 'rollup-plugin-delete'
 
 export default defineConfig({
-    input: {
-        "data-structure": "./src/data-structure/index.ts",
-        index: "./src/index.ts",
-    },
-    output: {
-        dir: "dist",
-        format: "es",
-    },
-    plugins: [
-        del({ targets: "dist/*" }),
-        typescript(),
-        terser({
-            keep_classnames: true,
-        }),
-        emitDeclarations([{ name: "data-structure", path: "./src/data-structure/types.d.ts" }]),
-    ],
-});
+  input: {
+    async: './src/async/index.ts',
+    immutable: './src/immutable/index.ts',
+    index: './src/index.ts',
+    object: './src/object/index.ts',
+    path: './src/path/index.ts',
+  },
+  output: {
+    dir: 'dist',
+    format: 'es',
+    sourcemap: true,
+  },
+  plugins: [
+    del({ hook: 'buildStart', targets: 'dist/*' }),
+    typescript({
+      declaration: true,
+      declarationDir: 'dist',
+      noEmitOnError: true,
+      rootDir: 'src',
+      sourceMap: true,
+    }),
+    terser({
+      compress: true,
+      format: { comments: false },
+      mangle: true,
+      module: true,
+    }),
+  ],
+  preserveEntrySignatures: 'strict',
+  treeshake: true,
+})

@@ -1,45 +1,83 @@
 {
   "name": "@chanyuxi/utils",
-  "version": "0.1.6",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.4.1",
+  "description": "Collection of practical tools for personal use",
   "author": "Chan-Yuxi <2438149743@qq.com> (https://github.com/Chan-Yuxi)",
   "license": "ISC",
-  "description": "Collection of practical tools for personal use",
-  "keywords": [
-    "serialize"
-  ],
   "homepage": "https://github.com/Chan-Yuxi/utilsjs#readme",
   "bugs": {
     "url": "https://github.com/Chan-Yuxi/utilsjs/issues",
     "email": "2438149743@qq.com"
   },
-  "packageManager": "pnpm@10.4.1",
+  "keywords": [
+    "serialize"
+  ],
   "publishConfig": {
     "access": "public"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./async": {
+      "types": "./dist/async/index.d.ts",
+      "import": "./dist/async.js"
+    },
+    "./immutable": {
+      "types": "./dist/immutable/index.d.ts",
+      "import": "./dist/immutable.js"
+    },
+    "./object": {
+      "types": "./dist/object/index.d.ts",
+      "import": "./dist/object.js"
+    },
+    "./path": {
+      "types": "./dist/path/index.d.ts",
+      "import": "./dist/path.js"
+    }
+  },
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "type": "module",
-  "main": "./dist/index.js",
-  "exports": {
-    ".": "./dist/index.js",
-    "./data-structure": "./dist/data-structure.js",
-    "./data-structure.js": "./dist/data-structure.js"
-  },
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin typescript",
-    "test": "mocha"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.2",
-    "@tsconfig/recommended": "^1.0.8",
-    "@types/node": "^22.13.5",
-    "mocha": "^11.1.0",
-    "prettier": "3.5.2",
-    "rollup": "^4.34.8",
-    "rollup-plugin-delete": "^3.0.0",
-    "tslib": "^2.8.1"
+    "@changesets/cli": "^3.0.3",
+    "@chanyuxi/eslint-waltz": "^1.5.0",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@tsconfig/recommended": "^1.0.13",
+    "@types/node": "^26.6.5",
+    "@vitest/eslint-plugin": "1.6.27",
+    "eslint": "10.10.0",
+    "eslint-config-flat-gitignore": "2.4.0",
+    "eslint-plugin-import-x": "4.17.1",
+    "eslint-plugin-jsonc": "3.4.2",
+    "eslint-plugin-perfectionist": "5.11.0",
+    "husky": "^9.1.7",
+    "jiti": "2.7.0",
+    "jsonc-eslint-parser": "3.3.0",
+    "rollup": "^4.64.3",
+    "rollup-plugin-delete": "^3.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "8.70.0",
+    "vitest": "4.0.18"
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "@chanyuxi/utils",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "packageManager": "pnpm@10.4.1",
   "description": "Collection of practical tools for personal use",
   "author": "Chan-Yuxi <2438149743@qq.com> (https://github.com/Chan-Yuxi)",

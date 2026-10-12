@@ -1,5 +1,5 @@
 export { getPath } from './getPath'
 export { hasPath } from './hasPath'
 export { setPath } from './setPath'
-export type { PathSegments } from './shared'
+export type { PathInputValue, PathSegments, PathUpdate, PathValue } from './types'
 export { updatePath } from './updatePath'

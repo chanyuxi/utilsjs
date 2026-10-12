@@ -7,4 +7,9 @@ export {
   setPath,
   updatePath,
 } from './path'
-export type { PathSegments } from './path'
+export type {
+  PathInputValue,
+  PathSegments,
+  PathUpdate,
+  PathValue,
+} from './path'

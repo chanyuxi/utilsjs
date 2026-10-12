@@ -1,8 +1,7 @@
+import type { PathSegments } from './types'
+
 import { isPlainObject } from '../object/isPlainObject'
 import { hasOwn, isObjectLike } from '../shared'
-
-/** String segments used to access nested object properties. */
-export type PathSegments = readonly string[]
 
 const forbiddenSegments = new Set(['__proto__', 'constructor', 'prototype'])
 

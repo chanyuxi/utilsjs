@@ -1,4 +1,4 @@
-import type { PathSegments } from './shared'
+import type { PathSegments, PathUpdate } from './types'
 
 import { isPlainObject } from '../object/isPlainObject'
 
@@ -16,11 +16,15 @@ import { assertPathSegments } from './shared'
  * next // { user: { name: 'Grace' } }
  * state !== next // true
  */
-export function updatePath<TValue>(
-  source: TValue,
-  segments: PathSegments,
-  value: unknown,
-): TValue {
+export function updatePath<
+  TSource extends object,
+  const TSegments extends PathSegments,
+  TValue,
+>(
+  source: TSource,
+  segments: TSegments,
+  value: TValue,
+): PathUpdate<TSource, TSegments, TValue> {
   assertPathSegments(segments)
 
   const update = (current: unknown, index: number): unknown => {
@@ -42,5 +46,5 @@ export function updatePath<TValue>(
     return Object.freeze({ ...current, [segment]: next })
   }
 
-  return update(source, 0) as TValue
+  return update(source, 0) as PathUpdate<TSource, TSegments, TValue>
 }

@@ -21,6 +21,7 @@ export default defineConfig({
     typescript({
       declaration: true,
       declarationDir: 'dist',
+      inlineSources: true,
       noEmitOnError: true,
       rootDir: 'src',
       sourceMap: true,

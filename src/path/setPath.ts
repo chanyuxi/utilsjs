@@ -1,4 +1,4 @@
-import type { PathSegments } from './shared'
+import type { PathInputValue, PathSegments } from './types'
 
 import { isPlainObject } from '../object/isPlainObject'
 
@@ -15,15 +15,18 @@ import { assertPathSegments, assertPlainObjectTarget } from './shared'
  * setPath(target, ['user', 'name'], 'Ada')
  * target // { user: { name: 'Ada' } }
  */
-export function setPath(
-  target: Record<string, unknown>,
-  segments: PathSegments,
-  value: unknown,
+export function setPath<
+  TTarget extends object,
+  const TSegments extends PathSegments,
+>(
+  target: TTarget,
+  segments: TSegments,
+  value: PathInputValue<TTarget, TSegments>,
 ): void {
   assertPathSegments(segments)
   assertPlainObjectTarget(target)
 
-  let current = target
+  let current = target as Record<string, unknown>
   for (let index = 0; index < segments.length - 1; index += 1) {
     const segment = segments[index]!
     const existing = current[segment]

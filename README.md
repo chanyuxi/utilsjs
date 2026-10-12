@@ -2,7 +2,7 @@
   <img src="./assets/images/github_banner_image.png" alt="@chanyuxi/utilsjs" width="100%" />
 </p>
 
-# @chanyuxi/utils
+# Introduction
 
 A small, TypeScript-first collection of dependency-free JavaScript utilities for everyday application development.
 

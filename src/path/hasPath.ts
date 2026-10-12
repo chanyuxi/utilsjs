@@ -1,4 +1,4 @@
-import type { PathSegments } from './shared'
+import type { PathSegments } from './types'
 
 import { assertPathSegments, hasOwn, isObjectLike } from './shared'
 
@@ -10,10 +10,13 @@ import { assertPathSegments, hasOwn, isObjectLike } from './shared'
  * hasPath(data, ['user', 'name']) // true
  * hasPath(data, ['user', 'email']) // false
  */
-export function hasPath(source: unknown, segments: PathSegments): boolean {
+export function hasPath<TSource, const TSegments extends PathSegments>(
+  source: TSource,
+  segments: TSegments,
+): boolean {
   assertPathSegments(segments)
 
-  let current = source
+  let current: unknown = source
   for (const segment of segments) {
     if (!isObjectLike(current) || !hasOwn(current, segment)) {
       return false
